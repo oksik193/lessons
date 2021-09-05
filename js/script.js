@@ -1,8 +1,19 @@
 "use strict"; //отключение всего устаревшего
 
-//alert("lol");
+const numberOfFilms = +prompt("Сколько фильмов вы уже посмотрели?");
 
-//const result = confirm("are you here?");
+const personalMovieDB = {
+    count: numberOfFilms,
+    movies: {},
+    actors: {},
+    genres: [],
+    private: false
+};
 
-//const answer = prompt("Вам есть 18?", "")
+const firstMovie = prompt("Один из просмотренных фильмов?");
+personalMovieDB.movies[firstMovie] = +prompt("На сколько оцените его?");
+const secondMovie = prompt("Один из просмотренных фильмов?");
+personalMovieDB.movies[secondMovie] = +prompt("На сколько оцените его?");
+
+console.log(personalMovieDB);
 
