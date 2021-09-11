@@ -25,33 +25,27 @@ const movieDB = {
 
 };
 
-let ads = document.querySelectorAll('.promo__adv');
-ads[0].remove();
+let ads = document.querySelectorAll('.promo__adv img'),
+    bg = document.querySelector('.promo__bg'),
+    genre = bg.querySelector('.promo__genre');
 
-let genre = document.querySelector('.promo__genre');
+
+ads.forEach(element => {
+    element.remove();
+});
 genre.textContent = 'Драма';
-
-let bg = document.querySelector('.promo__bg');
 bg.style.cssText += 'background-image: url(img/bg.jpg);';
 
-function compareNmbr(a, b){
-    return (a-b);
-}
-movieDB.movies.sort(compareNmbr);
+movieDB.movies.sort();
 
-let promoInteractive = document.querySelector('.promo__interactive');
-let promoInteractiveTitle = promoInteractive.querySelector('.promo__interactive-title');
 let listOfFilms = document.querySelector('.promo__interactive-list');
-listOfFilms.remove();
+listOfFilms.innerHTML = '';
 
-let newListOfFilms = document.createElement('ol');
-newListOfFilms.classList.add('.promo__interactive-list');
-
-movieDB.movies.forEach(element => {
-   newListOfFilms.innerHTML += `<li>${element}</li>`; 
-});
-
-promoInteractiveTitle.after(newListOfFilms);
+movieDB.movies.forEach((element, i) => {
+    listOfFilms.innerHTML += `
+    <li class="promo__interactive-item">${i+1}. ${element}</li>
+    `; 
+ });
 
 
 
